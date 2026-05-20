@@ -3,7 +3,7 @@
 import { Suspense } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { EVENT_CATEGORIES, CATEGORY_PARAM } from '@/lib/categories';
+import { CATEGORIES, CATEGORY_PARAM } from '@/lib/categories';
 
 function CategoryFilterInner() {
   const router = useRouter();
@@ -30,7 +30,7 @@ function CategoryFilterInner() {
 
   return (
     <div className="flex flex-wrap gap-2">
-      {EVENT_CATEGORIES.map(({ id, label, Icon }) => {
+      {CATEGORIES.map(({ id, label, emoji }) => {
         const isActive = activeIds.includes(id);
         return (
           <button
@@ -44,7 +44,7 @@ function CategoryFilterInner() {
                 : 'bg-background text-muted border-border hover:border-primary hover:text-foreground',
             )}
           >
-            <Icon size={14} aria-hidden />
+            <span aria-hidden>{emoji}</span>
             {label}
           </button>
         );
@@ -59,7 +59,7 @@ function CategoryFilterSkeleton() {
       {Array.from({ length: 8 }).map((_, i) => (
         <div
           key={i}
-          className="h-8 rounded-full bg-border animate-pulse"
+          className="h-8 w-24 rounded-full bg-border animate-pulse"
           style={{ width: `${72 + (i % 3) * 20}px` }}
         />
       ))}

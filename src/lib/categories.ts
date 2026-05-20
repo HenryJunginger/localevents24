@@ -1,30 +1,12 @@
-import {
-  Baby,
-  Dumbbell,
-  Lightbulb,
-  MoreHorizontal,
-  Music,
-  Palette,
-  PartyPopper,
-  ShoppingBag,
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import { Category } from '@/types';
 
-export interface EventCategory {
-  id: string;
-  label: string;
-  Icon: LucideIcon;
-}
-
-export const EVENT_CATEGORIES: EventCategory[] = [
-  { id: 'konzerte', label: 'Konzerte', Icon: Music },
-  { id: 'sport', label: 'Sport', Icon: Dumbbell },
-  { id: 'familie', label: 'Familie', Icon: Baby },
-  { id: 'kultur', label: 'Kultur', Icon: Palette },
-  { id: 'nightlife', label: 'Party & Nightlife', Icon: PartyPopper },
-  { id: 'maerkte', label: 'Märkte & Flohmärkte', Icon: ShoppingBag },
-  { id: 'workshops', label: 'Workshops', Icon: Lightbulb },
-  { id: 'sonstiges', label: 'Sonstiges', Icon: MoreHorizontal },
+export const CATEGORIES: { id: Exclude<Category, 'alle'>; label: string; emoji: string }[] = [
+  { id: 'sport', label: 'Sport', emoji: '⚽' },
+  { id: 'kultur', label: 'Kultur', emoji: '🎭' },
+  { id: 'bildung', label: 'Bildung', emoji: '🎓' },
+  { id: 'nightlife', label: 'Nightlife', emoji: '🥂' },
+  { id: 'familie', label: 'Familie', emoji: '🧸' },
+  { id: 'maerkte', label: 'Märkte', emoji: '🛒' },
 ];
 
 export const CATEGORY_PARAM = 'kategorien';
