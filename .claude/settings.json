@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "defaultMode": "default",
+    "additionalDirectories": ["C:\\LocalEvents24"],
+    "allow": [
+      "Read(C:\\LocalEvents24\\**)",
+      "Edit(C:\\LocalEvents24\\**)",
+      "Write(C:\\LocalEvents24\\**)",
+      "Bash(git *)",
+      "Bash(npm *)",
+      "Bash(npx *)"
+    ]
+  }
+}

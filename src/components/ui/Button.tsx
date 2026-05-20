@@ -1,16 +1,28 @@
 import { cn } from '@/lib/utils';
 import { ButtonHTMLAttributes } from 'react';
+import { Loader2 } from 'lucide-react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
+  isLoading?: boolean;
 }
 
-export function Button({ variant = 'primary', size = 'md', className, children, ...props }: ButtonProps) {
+export function Button({
+  variant = 'primary',
+  size = 'md',
+  isLoading,
+  className,
+  children,
+  disabled,
+  ...props
+}: ButtonProps) {
   return (
     <button
+      disabled={isLoading || disabled}
       className={cn(
-        'inline-flex items-center justify-center font-semibold rounded-md transition-colors cursor-pointer',
+        'inline-flex items-center justify-center gap-2 font-semibold rounded-md transition-colors cursor-pointer',
+        'disabled:opacity-60 disabled:cursor-not-allowed',
         {
           'bg-primary text-white hover:bg-primary-hover': variant === 'primary',
           'bg-surface text-foreground border border-border hover:bg-border': variant === 'secondary',
@@ -23,6 +35,7 @@ export function Button({ variant = 'primary', size = 'md', className, children, 
       )}
       {...props}
     >
+      {isLoading && <Loader2 size={16} className="animate-spin" />}
       {children}
     </button>
   );
