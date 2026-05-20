@@ -15,7 +15,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Samstag, 16. Mai',
     time: '15:30 Uhr',
     location: 'Voith-Arena, Heidenheim',
-    category: 'Sport',
+    category: 'sport',
     emoji: '⚽',
   },
   {
@@ -24,7 +24,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Montag, 18. Mai',
     time: '18:00 Uhr',
     location: 'Volkshochschule Heidenheim',
-    category: 'Bildung',
+    category: 'workshops',
     emoji: '🎓',
   },
   {
@@ -33,7 +33,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Mittwoch, 21. Mai',
     time: '07:00 Uhr',
     location: 'Marktplatz, Heidenheim',
-    category: 'Märkte',
+    category: 'maerkte',
     emoji: '🛒',
   },
   {
@@ -42,7 +42,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Freitag, 23. Mai',
     time: '20:00 Uhr',
     location: 'Schlosspark, Heidenheim',
-    category: 'Konzerte',
+    category: 'konzerte',
     emoji: '🎷',
   },
   {
@@ -51,7 +51,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Sonntag, 25. Mai',
     time: '10:00 Uhr',
     location: 'Tierpark Heidenheim',
-    category: 'Familie',
+    category: 'familie',
     emoji: '🦁',
   },
   {
@@ -60,7 +60,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Samstag, 24. Mai',
     time: '23:00 Uhr',
     location: 'Club Zentral, Heidenheim',
-    category: 'Nightlife',
+    category: 'nightlife',
     emoji: '🎧',
   },
   {
@@ -69,7 +69,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Dienstag, 27. Mai',
     time: '17:00 Uhr',
     location: 'Kunstschule Heidenheim',
-    category: 'Workshops',
+    category: 'workshops',
     emoji: '📷',
   },
   {
@@ -78,7 +78,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Samstag, 31. Mai',
     time: '14:00 Uhr',
     location: 'Treffpunkt Rathaus, Heidenheim',
-    category: 'Kultur',
+    category: 'kultur',
     emoji: '🏛️',
   },
   {
@@ -87,7 +87,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Sonntag, 1. Juni',
     time: '09:00 Uhr',
     location: 'Startplatz Brenzpark, Heidenheim',
-    category: 'Sport',
+    category: 'sport',
     emoji: '🏃',
   },
   {
@@ -96,7 +96,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Donnerstag, 29. Mai',
     time: '18:30 Uhr',
     location: 'Kreativwerkstatt, Heidenheim',
-    category: 'Workshops',
+    category: 'workshops',
     emoji: '🏺',
   },
   {
@@ -105,7 +105,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Samstag, 7. Juni',
     time: '11:00 Uhr',
     location: 'Riedbad, Heidenheim',
-    category: 'Familie',
+    category: 'familie',
     emoji: '🎪',
   },
   {
@@ -114,7 +114,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Sonntag, 8. Juni',
     time: '08:00 Uhr',
     location: 'Festplatz, Heidenheim',
-    category: 'Märkte',
+    category: 'maerkte',
     emoji: '🗿',
   },
   {
@@ -123,7 +123,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Mittwoch, 4. Juni',
     time: '20:00 Uhr',
     location: 'Kulturhaus Heidenheim',
-    category: 'Kultur',
+    category: 'kultur',
     emoji: '🎤',
   },
   {
@@ -132,7 +132,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Freitag, 6. Juni',
     time: '21:00 Uhr',
     location: 'Tanzstudio Rhythmus, Heidenheim',
-    category: 'Nightlife',
+    category: 'nightlife',
     emoji: '💃',
   },
   {
@@ -141,7 +141,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Montag, 2. Juni',
     time: '16:00 Uhr',
     location: 'Volkshochschule Heidenheim',
-    category: 'Bildung',
+    category: 'workshops',
     emoji: '🎨',
   },
   {
@@ -150,7 +150,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Samstag, 14. Juni',
     time: '19:30 Uhr',
     location: 'Stadthalle Heidenheim',
-    category: 'Konzerte',
+    category: 'konzerte',
     emoji: '🎸',
   },
   {
@@ -159,7 +159,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Sonntag, 15. Juni',
     time: '09:00 Uhr',
     location: 'Brenzpark, Heidenheim',
-    category: 'Sport',
+    category: 'sport',
     emoji: '🧘',
   },
   {
@@ -168,7 +168,7 @@ export const PLACEHOLDER_EVENTS: LocalEvent[] = [
     date: 'Dienstag, 10. Juni',
     time: '19:00 Uhr',
     location: 'Bücherei Heidenheim',
-    category: 'Bildung',
+    category: 'workshops',
     emoji: '🌱',
   },
 ];

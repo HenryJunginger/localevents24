@@ -4,8 +4,22 @@ import { PlzInput } from '@/components/ui/PlzInput';
 import { CategoryFilter } from '@/components/ui/CategoryFilter';
 import { EventCard } from '@/components/ui/EventCard';
 import { PLACEHOLDER_EVENTS } from '@/lib/events';
+import { CATEGORY_PARAM } from '@/lib/categories';
 
-export default function HomePage() {
+type PageProps = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export default async function HomePage({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const raw = params[CATEGORY_PARAM];
+  const activeIds = typeof raw === 'string' ? raw.split(',').filter(Boolean) : [];
+
+  const filteredEvents =
+    activeIds.length === 0
+      ? PLACEHOLDER_EVENTS
+      : PLACEHOLDER_EVENTS.filter((e) => activeIds.includes(e.category));
+
   return (
     <div className="bg-surface min-h-full">
       {/* Hero: Suche + Kategorie-Filter */}
@@ -48,11 +62,17 @@ export default function HomePage() {
             </select>
           </div>
 
-          <div className="space-y-3">
-            {PLACEHOLDER_EVENTS.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
-          </div>
+          {filteredEvents.length === 0 ? (
+            <p className="text-muted text-sm py-10 text-center">
+              Keine Events für diese Kategorie gefunden.
+            </p>
+          ) : (
+            <div className="space-y-3">
+              {filteredEvents.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
+          )}
         </section>
       </div>
     </div>

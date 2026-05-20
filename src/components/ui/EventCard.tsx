@@ -2,11 +2,13 @@
 
 import { Badge } from '@/components/ui/Badge';
 import { useFavorites } from '@/components/FavoritesProvider';
+import { EVENT_CATEGORIES } from '@/lib/categories';
 import type { LocalEvent } from '@/lib/events';
 
 export function EventCard({ event }: { event: LocalEvent }) {
   const { isFavorite, toggleFavorite } = useFavorites();
   const favorited = isFavorite(event.id);
+  const categoryLabel = EVENT_CATEGORIES.find((c) => c.id === event.category)?.label ?? event.category;
 
   return (
     <div className="bg-background rounded-lg border border-border shadow-card p-4 flex gap-4 hover:border-primary transition-colors cursor-pointer">
@@ -21,7 +23,7 @@ export function EventCard({ event }: { event: LocalEvent }) {
         </p>
         <p className="text-muted text-xs mt-0.5 truncate">{event.location}</p>
         <div className="mt-2">
-          <Badge label={event.category} />
+          <Badge label={categoryLabel} />
         </div>
       </div>
 
