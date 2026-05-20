@@ -1,7 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
+import { cn } from '@/lib/utils';
+
+const primaryBtn = cn(
+  'inline-flex items-center justify-center font-semibold rounded-md transition-colors',
+  'bg-primary text-white hover:bg-primary-hover',
+);
 
 export function Header() {
   return (
@@ -21,17 +26,15 @@ export function Header() {
           <Link href="/login" className="text-sm text-muted hover:text-foreground transition-colors">
             Einloggen
           </Link>
-          <Link href="/event-erstellen">
-            <Button size="sm">+ Event erstellen</Button>
+          <Link href="/event-erstellen" className={cn(primaryBtn, 'px-3 py-1.5 text-sm')}>
+            + Event erstellen
           </Link>
         </nav>
 
         {/* Mobile: nur CTA */}
-        <div className="sm:hidden">
-          <Link href="/event-erstellen">
-            <Button size="sm">+ Event</Button>
-          </Link>
-        </div>
+        <Link href="/event-erstellen" className={cn(primaryBtn, 'sm:hidden px-3 py-1.5 text-sm')}>
+          + Event
+        </Link>
       </div>
     </header>
   );

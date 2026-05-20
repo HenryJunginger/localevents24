@@ -24,3 +24,14 @@ export interface SearchParams {
   plz: string;
   category: Category;
 }
+
+export interface LocalEvent {
+  id: string;
+  title: string;
+  description?: string;
+  date: string;       // YYYY-MM-DD
+  time: string;       // HH:mm
+  location: string;
+  categoryId: string; // matches EVENT_CATEGORIES[].id
+  createdAt: number;  // Date.now() timestamp
+}

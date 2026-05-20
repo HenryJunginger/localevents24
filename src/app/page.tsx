@@ -3,24 +3,10 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { PlzInput } from '@/components/ui/PlzInput';
 import { CategoryFilter } from '@/components/ui/CategoryFilter';
-import { EventCard } from '@/components/ui/EventCard';
-import { CATEGORIES, CATEGORY_PARAM } from '@/lib/categories';
-import { PLACEHOLDER_EVENTS } from '@/lib/placeholder-events';
+import { EventList } from '@/components/events/EventList';
+import { CATEGORIES } from '@/lib/categories';
 
-type PageProps = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
-export default async function HomePage({ searchParams }: PageProps) {
-  const params = await searchParams;
-  const raw = params[CATEGORY_PARAM];
-  const activeIds = typeof raw === 'string' ? raw.split(',').filter(Boolean) : [];
-
-  const filteredEvents =
-    activeIds.length === 0
-      ? PLACEHOLDER_EVENTS
-      : PLACEHOLDER_EVENTS.filter((e) => activeIds.includes(e.category));
-
+export default function HomePage() {
   return (
     <div className="bg-surface min-h-full">
       {/* Hero: Suche + Kategorie-Filter */}
@@ -69,32 +55,7 @@ export default async function HomePage({ searchParams }: PageProps) {
         </section>
 
         {/* Event-Liste */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-bold text-foreground uppercase tracking-wide">
-              Events in deiner Nähe{' '}
-              <span className="text-muted font-normal normal-case tracking-normal">
-                (Beispiel-Einträge)
-              </span>
-            </h2>
-            <select className="text-sm border border-border rounded-md bg-background text-foreground py-1.5 px-3 focus:outline-none focus:ring-2 focus:ring-primary">
-              <option>Sortieren: Datum</option>
-              <option>Sortieren: Distanz</option>
-            </select>
-          </div>
-
-          {filteredEvents.length === 0 ? (
-            <p className="text-muted text-sm py-10 text-center">
-              Keine Events für diese Kategorie gefunden.
-            </p>
-          ) : (
-            <div className="space-y-3">
-              {filteredEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
-          )}
-        </section>
+        <EventList />
       </div>
     </div>
   );
