@@ -1,24 +1,11 @@
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { PlzInput } from '@/components/ui/PlzInput';
-import { CategoryFilter } from '@/components/ui/CategoryFilter';
 import { EventCard } from '@/components/ui/EventCard';
 import { PLACEHOLDER_EVENTS } from '@/lib/events';
-import { CATEGORY_PARAM } from '@/lib/categories';
 
-type PageProps = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
-export default async function HomePage({ searchParams }: PageProps) {
-  const params = await searchParams;
-  const raw = params[CATEGORY_PARAM];
-  const activeIds = typeof raw === 'string' ? raw.split(',').filter(Boolean) : [];
-
-  const filteredEvents =
-    activeIds.length === 0
-      ? PLACEHOLDER_EVENTS
-      : PLACEHOLDER_EVENTS.filter((e) => activeIds.includes(e.category));
+export default async function HomePage() {
+  const filteredEvents = PLACEHOLDER_EVENTS;
 
   return (
     <div className="bg-surface min-h-full">
@@ -42,7 +29,6 @@ export default async function HomePage({ searchParams }: PageProps) {
             </div>
           </div>
 
-          <CategoryFilter />
         </div>
       </section>
 
