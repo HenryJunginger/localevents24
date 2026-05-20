@@ -7,7 +7,8 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { CategoryFilter } from '@/components/ui/CategoryFilter';
-import { EVENT_CATEGORIES } from '@/lib/categories';
+import { useFavorites } from '@/components/FavoritesProvider';
+import { EVENT_CATEGORIES, CATEGORIES } from '@/lib/categories';
 import { loadEvents, formatEventDate } from '@/lib/events';
 import { haversineKm } from '@/lib/geo';
 import { cn } from '@/lib/utils';
@@ -181,6 +182,26 @@ export function SearchAndList() {
         </div>
       </section>
 
+      {/* Kategorie-Schnellauswahl */}
+      <div className="max-w-5xl mx-auto px-4 pt-8">
+        <div className="flex gap-5 overflow-x-auto pb-2">
+          {CATEGORIES.map((cat) => (
+            <Link
+              key={cat.id}
+              href={`/kategorie/${cat.id}`}
+              className="flex flex-col items-center gap-2 shrink-0 group"
+            >
+              <span className="emoji-circle w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center text-2xl shadow-card group-hover:border-primary group-hover:bg-primary-light transition">
+                {cat.emoji}
+              </span>
+              <span className="text-xs font-medium text-muted group-hover:text-primary transition">
+                {cat.label}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </div>
+
       {/* Event-Liste */}
       <div className="max-w-5xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-4">
@@ -249,6 +270,8 @@ export function SearchAndList() {
 function EventCard({ event, userCoords }: { event: LocalEvent; userCoords: Coords | null }) {
   const category = EVENT_CATEGORIES.find((c) => c.id === event.categoryId);
   const { Icon, label } = category ?? { Icon: null, label: event.categoryId };
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const favorited = isFavorite(event.id);
 
   const distanceKm =
     userCoords && event.lat && event.lng
@@ -283,10 +306,14 @@ function EventCard({ event, userCoords }: { event: LocalEvent; userCoords: Coord
       </div>
 
       <button
-        className="text-muted hover:text-primary transition-colors shrink-0 self-start"
-        aria-label="Merken"
+        className="shrink-0 self-start transition-colors"
+        aria-label={favorited ? 'Von Merkliste entfernen' : 'Merken'}
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleFavorite(event.id);
+        }}
       >
-        <HeartIcon />
+        <HeartIcon filled={favorited} />
       </button>
     </div>
   );
@@ -352,9 +379,17 @@ function SearchIcon() {
   );
 }
 
-function HeartIcon() {
+function HeartIcon({ filled }: { filled: boolean }) {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill={filled ? '#ef4444' : 'none'}
+      stroke={filled ? '#ef4444' : 'currentColor'}
+      strokeWidth="2"
+      className={filled ? '' : 'text-muted hover:text-primary'}
+    >
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
     </svg>
   );
