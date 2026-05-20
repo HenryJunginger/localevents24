@@ -91,7 +91,7 @@ export function PlzInput({ className, id = 'plz' }: PlzInputProps) {
           }}
           placeholder="z.B. 89522 Heidenheim"
           className={cn(
-            'w-full border border-border rounded-md bg-white text-foreground placeholder:text-muted',
+            'w-full border border-border rounded-md bg-background text-foreground placeholder:text-muted',
             'focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent',
             'py-2.5 pl-3 pr-9 text-sm transition',
             locationState === 'error' && 'border-red-400 focus:ring-red-400',

@@ -21,7 +21,7 @@ export function Input({ icon, label, className, id, ...props }: InputProps) {
         <input
           id={id}
           className={cn(
-            'w-full border border-border rounded-md bg-white text-foreground placeholder:text-muted',
+            'w-full border border-border rounded-md bg-background text-foreground placeholder:text-muted',
             'focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent',
             'py-2.5 text-sm transition',
             icon ? 'pl-9 pr-3' : 'px-3',
