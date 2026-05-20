@@ -12,6 +12,9 @@
   --primary-hover: #ea580c;
   --primary-light: #fff7ed;
   --navy: #1b3a5c;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
 }
 
 .dark {
@@ -22,6 +25,9 @@
   --border: #27272a;
   --primary-light: #3d1a00;
   --navy: #7dd3fc;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #f87171;
 }
 
 @theme inline {
@@ -34,6 +40,9 @@
   --color-primary-hover: var(--primary-hover);
   --color-primary-light: var(--primary-light);
   --color-navy: var(--navy);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
