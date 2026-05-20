@@ -20,7 +20,14 @@ export default function EventErstellenPage() {
   } = useForm<EventFormData>({ resolver: zodResolver(eventSchema) });
 
   async function onSubmit(data: EventFormData) {
-    saveEvent(data);
+    let lat: number | undefined;
+    let lng: number | undefined;
+    try {
+      const res = await fetch(`/api/geocode?q=${encodeURIComponent(data.location)}`);
+      const coords: { lat: number; lng: number } | null = await res.json();
+      if (coords) { lat = coords.lat; lng = coords.lng; }
+    } catch { /* geocoding optional – event saves regardless */ }
+    saveEvent({ ...data, lat, lng });
     router.push('/');
   }
 
