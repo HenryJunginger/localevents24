@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { PlzInput } from '@/components/ui/PlzInput';
 import { Badge } from '@/components/ui/Badge';
 import { Category } from '@/types';
 
@@ -57,12 +58,7 @@ export default function HomePage() {
             />
 
             <div className="mt-4 flex flex-col sm:flex-row gap-3 items-end">
-              <Input
-                id="plz"
-                label="PLZ / Ort"
-                placeholder="z.B. 89522 Heidenheim"
-                className="sm:max-w-[200px]"
-              />
+              <PlzInput />
 
               <div className="flex flex-col gap-1">
                 <label htmlFor="kategorie" className="text-sm font-semibold text-foreground">
