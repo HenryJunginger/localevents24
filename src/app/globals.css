@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import 'react-day-picker/src/style.css';
 
 @variant dark (&:where(.dark, .dark *));
 
@@ -47,6 +48,38 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* react-day-picker theme overrides */
+.rdp-root {
+  --rdp-accent-color: var(--primary);
+  --rdp-accent-background-color: var(--primary-light);
+  --rdp-today-color: var(--primary);
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.rdp-day_button:hover:not(:disabled) {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.rdp-selected .rdp-day_button {
+  background-color: var(--primary);
+  color: white;
+}
+
+.rdp-chevron {
+  fill: var(--muted);
+}
+
+.rdp-month_caption {
+  font-size: 0.875rem;
+}
+
+.rdp-caption_label {
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 /* Emoji-Hervorhebung im Dark Mode */
