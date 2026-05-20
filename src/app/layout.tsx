@@ -4,6 +4,7 @@ import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { FavoritesProvider } from '@/components/FavoritesProvider';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -28,9 +29,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         <ThemeProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <FavoritesProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </FavoritesProvider>
         </ThemeProvider>
       </body>
     </html>
