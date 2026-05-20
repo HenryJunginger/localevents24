@@ -46,9 +46,9 @@ export default function HomePage() {
   return (
     <div className="bg-surface min-h-full">
       {/* Hero-Suchbereich */}
-      <section className="bg-white border-b border-border py-8 px-4">
+      <section className="bg-background border-b border-border py-8 px-4">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-lg shadow-card border border-border p-5 max-w-2xl">
+          <div className="bg-background rounded-lg shadow-card border border-border p-5 max-w-2xl">
             <Input
               id="search"
               label="Was suchst du?"
@@ -70,7 +70,7 @@ export default function HomePage() {
                 </label>
                 <select
                   id="kategorie"
-                  className="border border-border rounded-md bg-white text-sm text-foreground py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="border border-border rounded-md bg-background text-sm text-foreground py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 >
                   <option value="alle">Alle</option>
                   {CATEGORIES.map((cat) => (
@@ -98,7 +98,7 @@ export default function HomePage() {
                 key={cat.id}
                 className="flex flex-col items-center gap-2 shrink-0 group cursor-pointer"
               >
-                <span className="w-14 h-14 rounded-full bg-white border border-border flex items-center justify-center text-2xl shadow-card group-hover:border-primary group-hover:bg-primary-light transition">
+                <span className="w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center text-2xl shadow-card group-hover:border-primary group-hover:bg-primary-light transition">
                   {cat.emoji}
                 </span>
                 <span className="text-xs font-medium text-muted group-hover:text-primary transition">
@@ -118,7 +118,7 @@ export default function HomePage() {
                 (Beispiel-Einträge)
               </span>
             </h2>
-            <select className="text-sm border border-border rounded-md bg-white text-foreground py-1.5 px-3 focus:outline-none focus:ring-2 focus:ring-primary">
+            <select className="text-sm border border-border rounded-md bg-background text-foreground py-1.5 px-3 focus:outline-none focus:ring-2 focus:ring-primary">
               <option>Sortieren: Datum</option>
               <option>Sortieren: Distanz</option>
             </select>
@@ -137,7 +137,7 @@ export default function HomePage() {
 
 function EventCard({ event }: { event: (typeof PLACEHOLDER_EVENTS)[number] }) {
   return (
-    <div className="bg-white rounded-lg border border-border shadow-card p-4 flex gap-4 hover:border-primary transition-colors cursor-pointer">
+    <div className="bg-background rounded-lg border border-border shadow-card p-4 flex gap-4 hover:border-primary transition-colors cursor-pointer">
       <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-md bg-surface border border-border shrink-0 flex items-center justify-center text-2xl">
         {event.emoji}
       </div>

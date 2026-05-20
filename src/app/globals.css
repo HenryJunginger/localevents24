@@ -12,6 +12,16 @@
   --navy: #1b3a5c;
 }
 
+.dark {
+  --background: #111827;
+  --surface: #1f2937;
+  --foreground: #f9fafb;
+  --muted: #9ca3af;
+  --border: #374151;
+  --primary-light: #431407;
+  --navy: #93c5fd;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
