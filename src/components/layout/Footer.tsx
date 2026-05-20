@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { DarkModeToggle } from '@/components/ui/DarkModeToggle';
 
 export function Footer() {
   return (
@@ -15,6 +16,7 @@ export function Footer() {
           <Link href="/ueber-uns" className="hover:text-foreground transition-colors">
             Über uns
           </Link>
+          <DarkModeToggle />
         </nav>
       </div>
     </footer>
