@@ -34,4 +34,6 @@ export interface LocalEvent {
   location: string;
   categoryId: string; // matches EVENT_CATEGORIES[].id
   createdAt: number;  // Date.now() timestamp
+  lat?: number;
+  lng?: number;
 }
