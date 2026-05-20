@@ -1,16 +1,7 @@
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Badge } from '@/components/ui/Badge';
-import { Category } from '@/types';
-
-const CATEGORIES: { id: Category; label: string; emoji: string }[] = [
-  { id: 'sport', label: 'Sport', emoji: '⚽' },
-  { id: 'kultur', label: 'Kultur', emoji: '🎭' },
-  { id: 'bildung', label: 'Bildung', emoji: '🎓' },
-  { id: 'nightlife', label: 'Nightlife', emoji: '🥂' },
-  { id: 'familie', label: 'Familie', emoji: '🧸' },
-  { id: 'maerkte', label: 'Märkte', emoji: '🛒' },
-];
+import { CategoryFilter } from '@/components/ui/CategoryFilter';
 
 const PLACEHOLDER_EVENTS = [
   {
@@ -45,9 +36,9 @@ const PLACEHOLDER_EVENTS = [
 export default function HomePage() {
   return (
     <div className="bg-surface min-h-full">
-      {/* Hero-Suchbereich */}
+      {/* Hero: Suche + Kategorie-Filter */}
       <section className="bg-background border-b border-border py-8 px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto space-y-5">
           <div className="bg-background rounded-lg shadow-card border border-border p-5 max-w-2xl">
             <Input
               id="search"
@@ -64,51 +55,17 @@ export default function HomePage() {
                 className="sm:max-w-[200px]"
               />
 
-              <div className="flex flex-col gap-1">
-                <label htmlFor="kategorie" className="text-sm font-semibold text-foreground">
-                  Kategorie
-                </label>
-                <select
-                  id="kategorie"
-                  className="border border-border rounded-md bg-background text-sm text-foreground py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                >
-                  <option value="alle">Alle</option>
-                  {CATEGORIES.map((cat) => (
-                    <option key={cat.id} value={cat.id}>
-                      {cat.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
               <Button size="lg" className="w-full sm:w-auto whitespace-nowrap">
                 Finden
               </Button>
             </div>
           </div>
+
+          <CategoryFilter />
         </div>
       </section>
 
       <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
-        {/* Kategorie-Schnellauswahl */}
-        <section>
-          <div className="flex gap-5 overflow-x-auto pb-2">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat.id}
-                className="flex flex-col items-center gap-2 shrink-0 group cursor-pointer"
-              >
-                <span className="emoji-circle w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center text-2xl shadow-card group-hover:border-primary group-hover:bg-primary-light transition">
-                  {cat.emoji}
-                </span>
-                <span className="text-xs font-medium text-muted group-hover:text-primary transition">
-                  {cat.label}
-                </span>
-              </button>
-            ))}
-          </div>
-        </section>
-
         {/* Event-Liste */}
         <section>
           <div className="flex items-center justify-between mb-4">
