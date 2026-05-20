@@ -98,7 +98,7 @@ export default function HomePage() {
                 key={cat.id}
                 className="flex flex-col items-center gap-2 shrink-0 group cursor-pointer"
               >
-                <span className="w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center text-2xl shadow-card group-hover:border-primary group-hover:bg-primary-light transition">
+                <span className="emoji-circle w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center text-2xl shadow-card group-hover:border-primary group-hover:bg-primary-light transition">
                   {cat.emoji}
                 </span>
                 <span className="text-xs font-medium text-muted group-hover:text-primary transition">
@@ -138,7 +138,7 @@ export default function HomePage() {
 function EventCard({ event }: { event: (typeof PLACEHOLDER_EVENTS)[number] }) {
   return (
     <div className="bg-background rounded-lg border border-border shadow-card p-4 flex gap-4 hover:border-primary transition-colors cursor-pointer">
-      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-md bg-surface border border-border shrink-0 flex items-center justify-center text-2xl">
+      <div className="emoji-box w-16 h-16 sm:w-20 sm:h-20 rounded-md bg-surface border border-border shrink-0 flex items-center justify-center text-2xl">
         {event.emoji}
       </div>
 
