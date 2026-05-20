@@ -21,12 +21,16 @@ export function Header() {
           <Link href="/login" className="text-sm text-muted hover:text-foreground transition-colors">
             Einloggen
           </Link>
-          <Button size="sm">+ Event erstellen</Button>
+          <Link href="/event-erstellen">
+            <Button size="sm">+ Event erstellen</Button>
+          </Link>
         </nav>
 
         {/* Mobile: nur CTA */}
         <div className="sm:hidden">
-          <Button size="sm">+ Event</Button>
+          <Link href="/event-erstellen">
+            <Button size="sm">+ Event</Button>
+          </Link>
         </div>
       </div>
     </header>
