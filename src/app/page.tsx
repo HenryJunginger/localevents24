@@ -1,0 +1,181 @@
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Badge } from '@/components/ui/Badge';
+import { Category } from '@/types';
+
+const CATEGORIES: { id: Category; label: string; emoji: string }[] = [
+  { id: 'sport', label: 'Sport', emoji: '⚽' },
+  { id: 'kultur', label: 'Kultur', emoji: '🎭' },
+  { id: 'bildung', label: 'Bildung', emoji: '🎓' },
+  { id: 'nightlife', label: 'Nightlife', emoji: '🥂' },
+  { id: 'familie', label: 'Familie', emoji: '🧸' },
+  { id: 'maerkte', label: 'Märkte', emoji: '🛒' },
+];
+
+const PLACEHOLDER_EVENTS = [
+  {
+    id: '1',
+    title: 'Heimspiel: 1. FC Heidenheim vs. VfB',
+    date: 'Samstag, 16. Mai',
+    time: '15:30 Uhr',
+    location: 'Voith-Arena, Heidenheim',
+    category: 'Sport',
+    emoji: '⚽',
+  },
+  {
+    id: '2',
+    title: 'VHS Kurs: Italienisch für Anfänger',
+    date: 'Montag, 18. Mai',
+    time: '18:00 Uhr',
+    location: 'Volkshochschule Heidenheim',
+    category: 'Bildung',
+    emoji: '🎓',
+  },
+  {
+    id: '3',
+    title: 'Wochenmarkt Heidenheim',
+    date: 'Mittwoch, 21. Mai',
+    time: '07:00 Uhr',
+    location: 'Marktplatz, Heidenheim',
+    category: 'Märkte',
+    emoji: '🛒',
+  },
+];
+
+export default function HomePage() {
+  return (
+    <div className="bg-surface min-h-full">
+      {/* Hero-Suchbereich */}
+      <section className="bg-white border-b border-border py-8 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-white rounded-lg shadow-card border border-border p-5 max-w-2xl">
+            <Input
+              id="search"
+              label="Was suchst du?"
+              placeholder="z.B. Flohmarkt, Konzert"
+              icon={<SearchIcon />}
+            />
+
+            <div className="mt-4 flex flex-col sm:flex-row gap-3 items-end">
+              <Input
+                id="plz"
+                label="PLZ / Ort"
+                placeholder="z.B. 89522 Heidenheim"
+                className="sm:max-w-[200px]"
+              />
+
+              <div className="flex flex-col gap-1">
+                <label htmlFor="kategorie" className="text-sm font-semibold text-foreground">
+                  Kategorie
+                </label>
+                <select
+                  id="kategorie"
+                  className="border border-border rounded-md bg-white text-sm text-foreground py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                >
+                  <option value="alle">Alle</option>
+                  {CATEGORIES.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <Button size="lg" className="w-full sm:w-auto whitespace-nowrap">
+                Finden
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
+        {/* Kategorie-Schnellauswahl */}
+        <section>
+          <div className="flex gap-5 overflow-x-auto pb-2">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                className="flex flex-col items-center gap-2 shrink-0 group cursor-pointer"
+              >
+                <span className="w-14 h-14 rounded-full bg-white border border-border flex items-center justify-center text-2xl shadow-card group-hover:border-primary group-hover:bg-primary-light transition">
+                  {cat.emoji}
+                </span>
+                <span className="text-xs font-medium text-muted group-hover:text-primary transition">
+                  {cat.label}
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* Event-Liste */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-sm font-bold text-foreground uppercase tracking-wide">
+              Events in deiner Nähe{' '}
+              <span className="text-muted font-normal normal-case tracking-normal">
+                (Beispiel-Einträge)
+              </span>
+            </h2>
+            <select className="text-sm border border-border rounded-md bg-white text-foreground py-1.5 px-3 focus:outline-none focus:ring-2 focus:ring-primary">
+              <option>Sortieren: Datum</option>
+              <option>Sortieren: Distanz</option>
+            </select>
+          </div>
+
+          <div className="space-y-3">
+            {PLACEHOLDER_EVENTS.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+function EventCard({ event }: { event: (typeof PLACEHOLDER_EVENTS)[number] }) {
+  return (
+    <div className="bg-white rounded-lg border border-border shadow-card p-4 flex gap-4 hover:border-primary transition-colors cursor-pointer">
+      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-md bg-surface border border-border shrink-0 flex items-center justify-center text-2xl">
+        {event.emoji}
+      </div>
+
+      <div className="flex-1 min-w-0">
+        <h3 className="font-semibold text-foreground text-sm leading-snug">{event.title}</h3>
+        <p className="text-primary text-sm font-semibold mt-1">
+          {event.date} | {event.time}
+        </p>
+        <p className="text-muted text-xs mt-0.5 truncate">{event.location}</p>
+        <div className="mt-2">
+          <Badge label={event.category} />
+        </div>
+      </div>
+
+      <button
+        className="text-muted hover:text-primary transition-colors shrink-0 self-start"
+        aria-label="Merken"
+      >
+        <HeartIcon />
+      </button>
+    </div>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.35-4.35" />
+    </svg>
+  );
+}
+
+function HeartIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
+  );
+}
