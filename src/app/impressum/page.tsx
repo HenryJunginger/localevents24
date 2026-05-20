@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Impressum – LocalEvents24',
-  robots: { index: false },
+  robots: { index: true },
 };
 
 export default function ImpressumPage() {
@@ -17,16 +17,8 @@ export default function ImpressumPage() {
         </h2>
         <address className="not-italic text-sm text-foreground leading-relaxed space-y-0.5">
           <p className="font-medium">Henry Junginger</p>
-          <p>
-            <span className="inline-flex items-center gap-1.5 bg-warning/10 border border-warning/30 text-warning text-xs font-medium px-2 py-0.5 rounded">
-              ⚠ Bitte ergänzen: Straße und Hausnummer
-            </span>
-          </p>
-          <p>
-            <span className="inline-flex items-center gap-1.5 bg-warning/10 border border-warning/30 text-warning text-xs font-medium px-2 py-0.5 rounded">
-              ⚠ Bitte ergänzen: PLZ und Stadt
-            </span>
-          </p>
+          <p>Schloßgartenstraße 9</p>
+          <p>89561 Dischingen</p>
           <p>Deutschland</p>
         </address>
       </section>
